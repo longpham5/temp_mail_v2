@@ -33,7 +33,7 @@ export default function HomeInput({ emailValue }: HomeInputProps) {
               setEmail(`${e.target.value}@antdev.org`);
           }}
           placeholder="Enter your email address"
-          className="flex-grow"
+          className="flex-grow bg-white text-slate-800 border-slate-200"
           type="email"
         />
         <Button
@@ -43,10 +43,11 @@ export default function HomeInput({ emailValue }: HomeInputProps) {
           type="button"
           aria-label="Regenerate Email"
           title="Regenerate Email"
+          className="bg-indigo-50 text-indigo-600 border-indigo-200 hover:bg-indigo-100 hover:text-indigo-700 hover:border-indigo-300 transition-colors"
         >
           <RefreshCwIcon className="h-4 w-4" />
         </Button>
-        <CopyButton text={email} />
+        <CopyButton text={email} className="bg-indigo-50 text-indigo-600 border-indigo-200 hover:bg-indigo-100 hover:text-indigo-700 hover:border-indigo-300 transition-colors" />
       </div>
       <Link href={`/${email}`} title="Get mail now">
         <Button

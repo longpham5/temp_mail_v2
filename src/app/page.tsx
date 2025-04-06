@@ -5,10 +5,10 @@ import Link from "next/link";
 import { ArrowRight, Shield, Clock, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CopyEmailButton from "@/components/client/copy-email-button";
+import HomeInput from "@/components/client/home-input";
 
 export default function Home() {
   const email = `${randomMail()}@antdev.org`;
-  const encodedEmail = encodeURIComponent(email);
   
   return (
     <div className="space-y-12 py-6">
@@ -30,26 +30,8 @@ export default function Home() {
           </div>
           
           <div className="p-5 space-y-4">
-            <div className="relative">
-              <input
-                type="text"
-                readOnly
-                value={email}
-                className="w-full px-4 py-3 border border-slate-200 rounded-lg bg-slate-50 text-slate-800 font-medium"
-              />
-              <span className="absolute right-2 top-1/2 -translate-y-1/2">
-                <CopyEmailButton email={email} className="h-8" />
-              </span>
-            </div>
-            
-            <div className="flex justify-center">
-              <Link href={`/${email}`}>
-                <Button className="bg-indigo-600 hover:bg-indigo-700 text-white flex gap-2 items-center">
-                  Open Inbox
-                  <ArrowRight className="size-4" />
-                </Button>
-              </Link>
-            </div>
+            {/* Replacing static input with HomeInput component */}
+            <HomeInput emailValue={email} />
           </div>
         </div>
       </section>
@@ -94,7 +76,7 @@ export default function Home() {
           It's completely free, open-source, and requires no sign-up.
         </p>
         <div className="flex justify-center">
-          <Link href={`/${encodedEmail}`}>
+          <Link href={`/${email}`}>
             <Button className="bg-white hover:bg-slate-100 text-indigo-600">
               Get Started
             </Button>

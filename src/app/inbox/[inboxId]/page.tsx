@@ -38,13 +38,24 @@ export default async function InboxPage({ params }: InboxProps) {
   
   const renderContent = () => {
     if (data?.htmlContent) {
+      // Use base tag to make all links open in new tabs instead of JavaScript
+      const htmlWithTargetBlank = `
+        <base target="_blank">
+        <style>
+          body { margin: 0; font-family: system-ui, sans-serif; }
+          a { color: #4f46e5; text-decoration: underline; }
+        </style>
+        ${data.htmlContent}
+      `;
+      
       return (
         <div className="prose prose-slate max-w-none">
           <iframe 
-            srcDoc={data.htmlContent}
+            srcDoc={htmlWithTargetBlank}
             className="w-full min-h-[400px] border-0"
             title="Email content"
-            sandbox="allow-same-origin"
+            referrerPolicy="no-referrer"
+            sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
           />
         </div>
       );
