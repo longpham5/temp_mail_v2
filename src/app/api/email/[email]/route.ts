@@ -1,26 +1,20 @@
-import { NextResponse, type NextRequest } from "next/server";
-
 import { getEmailsForAddress } from "@/database/db";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
-  const email = request.nextUrl.pathname.split("/").pop() as string;
-  const decodedEmail = decodeURIComponent(email);
-
-  if (!decodedEmail.includes("@"))
-    return NextResponse.json(
-      { error: "Invalid email address" },
-      {
-        status: 400
-      }
-    );
-
-  const result = getEmailsForAddress(decodedEmail);
-  if (result.success) return NextResponse.json(result.data);
-
-  return NextResponse.json(
-    { error: result.error.message },
-    {
-      status: 400
-    }
-  );
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ email: string }> }
+) {
+  // Await params before accessing its properties
+  const resolvedParams = await params;
+  const email = decodeURIComponent(resolvedParams.email);
+  
+  // Fetch emails for the provided address
+  const result = getEmailsForAddress(email);
+  
+  if (!result.success) {
+    return NextResponse.json({ error: "Failed to fetch emails" }, { status: 500 });
+  }
+  
+  return NextResponse.json(result.data);
 }

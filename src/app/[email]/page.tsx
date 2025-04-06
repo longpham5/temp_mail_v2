@@ -1,9 +1,10 @@
 import { getEmailsForAddress } from "@/database/db";
 import Link from "next/link";
-import { ArrowLeft, Inbox, AlertCircle } from "lucide-react";
+import { ArrowLeft, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CopyEmailButton from "@/components/client/copy-email-button";
 import RefreshButton from "@/components/client/refresh-button";
+import EmailsContainer from "@/components/client/emails-container";
 
 interface EmailProps {
   params: Promise<{
@@ -81,48 +82,13 @@ export default async function Email({ params }: EmailProps) {
         <CopyEmailButton email={decodedEmail} />
       </div>
       
-      {/* Email list */}
+      {/* Email list with auto-refresh */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="border-b border-slate-100 p-4">
-          <h2 className="font-medium text-slate-800">Messages</h2>
-        </div>
-        
-        {result.data && result.data.length > 0 ? (
-          <ul className="divide-y divide-slate-100">
-            {result.data.map((email) => (
-              <li key={email.id}>
-                <Link 
-                  href={`/inbox/${email.id}`}
-                  className="block p-4 hover:bg-slate-50 transition-colors"
-                >
-                  <div className="flex justify-between items-start gap-4">
-                    <div className="flex-grow min-w-0">
-                      <p className="font-medium text-slate-800 truncate mb-1">
-                        {email.subject || "(No Subject)"}
-                      </p>
-                      <p className="text-sm text-slate-500 truncate">
-                        From: {email.fromAddress || "Unknown Sender"}
-                      </p>
-                    </div>
-                    <div className="text-xs text-slate-400 shrink-0">
-                      {new Date(email.createdAt).toLocaleDateString()} {new Date(email.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="py-12 flex flex-col items-center justify-center text-center p-4">
-            <div className="size-16 rounded-full bg-slate-100 flex items-center justify-center mb-4">
-              <Inbox className="size-8 text-slate-400" />
-            </div>
-            <h3 className="text-lg font-medium text-slate-800 mb-1">No messages yet</h3>
-            <p className="text-slate-500 max-w-sm">
-              Messages sent to this address will appear here automatically. Refresh the page to check for new emails.
-            </p>
-          </div>
-        )}
+        <EmailsContainer
+          initialEmails={result.data} 
+          emailAddress={decodedEmail} 
+          refreshInterval={15000}
+        />
       </div>
     </div>
   );
