@@ -1,7 +1,6 @@
 <div align="center">
 
 <a href="https://email.antdev.org" target="_blank">
-    <img src="https://github.com/user-attachments/assets/c9f29d05-7652-46f6-baa1-1dd38e7814d1" alt="logo" width="128">
 </a>
 
 # LTT Email
