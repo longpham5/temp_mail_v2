@@ -8,7 +8,7 @@ import CopyEmailButton from "@/components/client/copy-email-button";
 import HomeInput from "@/components/client/home-input";
 
 export default function Home() {
-  const email = `${randomMail()}@antdev.org`;
+  const email = `${randomMail()}@longppham5.xyz`;
   
   return (
     <div className="space-y-12 py-6">
