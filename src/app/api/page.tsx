@@ -3,9 +3,9 @@ import CopyTextButton from "@/components/client/copy-text-button";
 
 export default function ApiPage() {
   const endpoints = {
-    getEmails: "https://email.antdev.org/api/email/recipient@antdev.org",
-    getInbox: "https://email.antdev.org/api/inbox/cm3sqher40005276o336z4fvw",
-    deleteInbox: "https://email.antdev.org/api/delete/cm3sqher40005276o336z4fvw"
+    getEmails: "https://email.longppham5.xyz/api/email/recipient@longppham5.xyz",
+    getInbox: "https://email.longppham5.xyz/api/inbox/cm3sqher40005276o336z4fvw",
+    deleteInbox: "https://email.longppham5.xyz/api/delete/cm3sqher40005276o336z4fvw"
   };
 
   return (
