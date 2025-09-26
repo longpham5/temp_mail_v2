@@ -2,7 +2,7 @@ import { MongoClient, ObjectId } from "mongodb";
 import cuid from "cuid";
 import type { DatabaseEmails, Result, SimplifiedEmail } from "@/types";
 import type { DatabaseInbox } from "@/types";
-import type { AddressObject } from "mailparser";
+
 // MongoDB connection
 const client = new MongoClient(process.env.MONGO_URL || "mongodb://localhost:27017", {
   maxPoolSize: 10,
@@ -46,6 +46,11 @@ interface InboxDocument {
   createdAt: number;
 }
 
+interface AddressObjectType {
+  address: string | null;
+  name?: string | null;
+}
+
 // Cleanup expired emails
 async function cleanupExpiredEmails() {
   try {
@@ -85,11 +90,11 @@ export async function insertEmail(emailData: SimplifiedEmail): Promise<Result<Ob
       createdAt: Date.now(),
       expiresAt,
       from: emailData.from?.value
-      ?.map((v: AddressObject) => v.address)
+      ?.map((v: AddressObjectType) => v.address)
       .filter((addr: string | null): addr is string => addr !== null) || [],
 
       to: emailData.to?.value
-      ?.map((v: AddressObject) => v.address)
+      ?.map((v: AddressObjectType) => v.address)
       .filter((addr: string | null): addr is string => addr !== null) || [],
       textContent: emailData.text,
       htmlContent: emailData.html
@@ -101,7 +106,7 @@ export async function insertEmail(emailData: SimplifiedEmail): Promise<Result<Ob
     // Create inbox entries for recipients
     const recipients = emailData.to?.value || [];
     if (recipients.length > 0) {
-      const inboxDocs: InboxDocument[] = recipients.map((recipient: AddressObject) => ({
+      const inboxDocs: InboxDocument[] = recipients.map((recipient: AddressObjectType) => ({
         _id: cuid(),
         emailId,
         address: recipient.address,
@@ -230,11 +235,11 @@ export const SimpleMongoQueries = {
         createdAt: Date.now(),
         expiresAt: Date.now() + 3 * 24 * 60 * 60 * 1000,
         from: emailData.from?.value
-        ?.map((v: AddressObject) => v.address)
+        ?.map((v: AddressObjectType) => v.address)
         .filter((addr: string | null): addr is string => addr !== null) || [],
 
         to: emailData.to?.value
-        ?.map((v: AddressObject) => v.address)
+        ?.map((v: AddressObjectType) => v.address)
         .filter((addr: string | null): addr is string => addr !== null) || [],
         textContent: emailData.text,
         htmlContent: emailData.html
