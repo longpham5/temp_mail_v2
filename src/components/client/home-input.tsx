@@ -19,7 +19,7 @@ export default function HomeInput({ emailValue }: HomeInputProps) {
   const [email, setEmail] = useState<string>(emailValue);
 
   const regenerateEmail = () => {
-    setEmail(`${randomMail()}@antdev.org`);
+    setEmail(`${randomMail()}@longppham5.xyz`);
   };
 
   return (
@@ -29,8 +29,8 @@ export default function HomeInput({ emailValue }: HomeInputProps) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onBlur={(e) => {
-            if (!e.target.value.includes("@antdev.org"))
-              setEmail(`${e.target.value}@antdev.org`);
+            if (!e.target.value.includes("@longppham5.xyz"))
+              setEmail(`${e.target.value}@longppham5.xyz`);
           }}
           placeholder="Enter your email address"
           className="flex-grow bg-white text-slate-800 border-slate-200"

@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { getInboxById, deleteInbox } from "@/database/db";
+import { getInboxById, deleteInbox } from "../../../../../old-db/db";
 
 export async function GET(request: NextRequest) {
   const inboxId = request.nextUrl.pathname.split("/").pop() as string;

@@ -110,7 +110,7 @@ export default function ApiPage() {
     "createdAt": 1732279492000,
     "expiresAt": 1732538692335,
     "fromAddress": "sender@example.com",
-    "toAddress": "recipient@antdev.org"
+    "toAddress": "recipient@longppham5.xyz"
   }
 ]`}
                   </pre>
@@ -183,7 +183,7 @@ export default function ApiPage() {
   "expiresAt": 1732538692335,
   "createdAt": 1732279492000,
   "fromAddress": "sender@example.com",
-  "toAddress": "recipient@antdev.org"
+  "toAddress": "recipient@longppham5.xyz"
 }`}
                   </pre>
                 </div>

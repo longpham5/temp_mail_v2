@@ -1,4 +1,4 @@
-import { getEmailsForAddress } from "@/database/db";
+import { getEmailsForAddress } from "../../../old-db/db";
 import Link from "next/link";
 import { ArrowLeft, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";

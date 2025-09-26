@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://email.antdev.org" target="_blank">
+<a href="https://email.longppham5.xyz" target="_blank">
 </a>
 
 # LTT Email
@@ -8,11 +8,11 @@
 
 Open-source temporary email service that provides quick, anonymous email solutions.
 
-<a href="https://email.antdev.org" target="_blank">
+<a href="https://email.longppham5.xyz" target="_blank">
     Website
 </a>
 •
-<a href="https://email.antdev.org/api" target="_blank">
+<a href="https://email.longppham5.xyz/api" target="_blank">
     API Docs
 </a>
 
