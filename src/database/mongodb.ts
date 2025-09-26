@@ -106,14 +106,20 @@ export async function insertEmail(emailData: SimplifiedEmail): Promise<Result<Ob
     // Create inbox entries for recipients
     const recipients = emailData.to?.value || [];
     if (recipients.length > 0) {
-      const inboxDocs: InboxDocument[] = recipients.map((recipient: AddressObjectType) => ({
-        _id: cuid(),
-        emailId,
-        address: recipient.address,
-        createdAt: Date.now()
-      }));
-      
-      await db.collection("inboxes").insertMany(inboxDocs);
+    const inboxDocs: InboxDocument[] = recipients
+        .map((recipient: AddressObjectType) =>
+        recipient.address
+            ? {
+                _id: cuid(),
+                emailId,
+                address: recipient.address, // chắc chắn là string
+                createdAt: Date.now(),
+            }
+            : null
+        )
+        .filter((doc: InboxDocument | null): doc is InboxDocument => doc !== null); // lọc null ra
+
+    await db.collection("inboxes").insertMany(inboxDocs);
     }
 
     return { success: true, data: emailId };
