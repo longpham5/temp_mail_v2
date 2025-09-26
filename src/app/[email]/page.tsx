@@ -36,7 +36,7 @@ export default async function Email({ params }: EmailProps) {
     );
   }
 
-  const result = getEmailsForAddress(decodedEmail);
+  const result = await getEmailsForAddress(decodedEmail);
   if (!result.success) {
     return (
       <div className="max-w-md mx-auto p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
