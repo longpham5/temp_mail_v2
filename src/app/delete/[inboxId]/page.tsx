@@ -12,7 +12,7 @@ interface InboxProps {
 export default async function DeletePage({ params }: InboxProps) {
   const { inboxId } = await params;
 
-  const getResult = getInboxById(inboxId);
+  const getResult = await getInboxById(inboxId);
   
   // Check if email exists
   if (!getResult.success || !getResult.data) {
@@ -36,7 +36,7 @@ export default async function DeletePage({ params }: InboxProps) {
   }
 
   // Try to delete the email
-  const deleteResult = deleteInbox(inboxId);
+  const deleteResult = await deleteInbox(inboxId);
   if (!deleteResult.success) {
     return (
       <div className="max-w-md mx-auto p-6 bg-white rounded-xl border border-slate-200 shadow-sm">

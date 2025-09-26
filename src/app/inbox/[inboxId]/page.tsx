@@ -13,7 +13,7 @@ interface InboxProps {
 export default async function InboxPage({ params }: InboxProps) {
   const { inboxId } = await params;
 
-  const result = getInboxById(inboxId);
+  const result = await getInboxById(inboxId);
   if (!result.success || !result.data) {
     return (
       <div className="max-w-md mx-auto p-6 bg-white rounded-xl border border-slate-200 shadow-sm">

@@ -5,7 +5,7 @@ import { getInboxById, deleteInbox } from "@/database/mongodb";
 export async function GET(request: NextRequest) {
   const inboxId = request.nextUrl.pathname.split("/").pop() as string;
 
-  const getResult = getInboxById(inboxId);
+  const getResult = await getInboxById(inboxId);
   if (getResult.success) {
     if (!getResult.data)
       return NextResponse.json(
@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
         { status: 404 }
       );
 
-    const deleteResult = deleteInbox(inboxId);
+    const deleteResult = await deleteInbox(inboxId);
     if (deleteResult.success) return NextResponse.json(true);
 
     return NextResponse.json(

@@ -10,7 +10,7 @@ export async function GET(
   const email = decodeURIComponent(resolvedParams.email);
   
   // Fetch emails for the provided address
-  const result = getEmailsForAddress(email);
+  const result = await getEmailsForAddress(email);
   
   if (!result.success) {
     return NextResponse.json({ error: "Failed to fetch emails" }, { status: 500 });

@@ -5,7 +5,7 @@ import { getInboxById } from "@/database/mongodb";
 export async function GET(request: NextRequest) {
   const inboxId = request.nextUrl.pathname.split("/").pop() as string;
 
-  const result = getInboxById(inboxId);
+  const result = await getInboxById(inboxId);
   if (result.success) {
     if (!result.data)
       return NextResponse.json(
