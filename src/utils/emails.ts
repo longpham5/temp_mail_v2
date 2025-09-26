@@ -1,6 +1,5 @@
-import type { ParsedMail, AddressObject } from "mailparser";
+import type { ParsedMail, AddressObject } from 'mailparser';
 import type { SimplifiedEmail, EmailAddress } from "@/types";
-
 // To safely convert AddressObject | AddressObject[] | undefined to EmailAddress
 export function convertAddress(
   address: AddressObject | AddressObject[] | undefined
