@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
       }
     );
 
-  const result = insertEmail(simplifiedEmail);
+  const result = await insertEmail(simplifiedEmail);
   if (result.success) return NextResponse.json("OK");
 
   return NextResponse.json(
