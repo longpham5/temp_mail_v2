@@ -96,8 +96,8 @@ export async function insertEmail(emailData: SimplifiedEmail): Promise<Result<Ob
       to: emailData.to?.value
       ?.map((v: AddressObjectType) => v.address)
       .filter((addr: string | null): addr is string => addr !== null) || [],
-      textContent: emailData.text,
-      htmlContent: emailData.html
+      textContent: emailData.text ?? undefined,
+      htmlContent: emailData.html ?? undefined
     };
 
     const emailResult = await db.collection("emails").insertOne(emailDoc);
