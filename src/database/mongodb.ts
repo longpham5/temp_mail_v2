@@ -81,7 +81,7 @@ export async function insertEmail(emailData: SimplifiedEmail): Promise<Result<Ob
     // Single insert with all email data
     const emailDoc: EmailDocument = {
       _id: new ObjectId(),
-      subject: emailData.subject,
+      subject: emailData.subject ?? "(No Subject)",
       createdAt: Date.now(),
       expiresAt,
       from: emailData.from?.value?.map(v => v.address) || [],
