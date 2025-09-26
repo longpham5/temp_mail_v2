@@ -1,4 +1,4 @@
-import { getEmailsForAddress } from "../../../../../old-db/db";
+import { getEmailsForAddress } from "@/database/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getInboxById } from "../../../../old-db/db";
+import { getInboxById } from "@/database/mongodb";
 import { formatDistanceToNow } from "date-fns";
 import { ArrowLeft, Trash2, Calendar, Clock, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";

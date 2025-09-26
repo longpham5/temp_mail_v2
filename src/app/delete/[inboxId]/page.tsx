@@ -1,4 +1,4 @@
-import { getInboxById, deleteInbox } from "../../../../old-db/db";
+import { getInboxById, deleteInbox } from "@/database/mongodb";
 import Link from "next/link";
 import { CheckCircle, XCircle, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";

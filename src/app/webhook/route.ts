@@ -4,7 +4,7 @@ import { Buffer } from "node:buffer";
 import { simpleParser } from "mailparser";
 import { simplifyEmail } from "@/utils/emails";
 import { emailSchema } from "@/utils/zod";
-import { insertEmail } from "../../../old-db/db";
+import { insertEmail } from "@/database/mongodb";
 
 import { env } from "@/env.mjs";
 
