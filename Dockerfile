@@ -11,4 +11,6 @@ RUN npm run build
 
 EXPOSE 9169
 
+ENV SECRET="12398"
+
 CMD ["npm", "run", "start"]

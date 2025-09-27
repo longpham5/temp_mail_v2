@@ -146,7 +146,7 @@ Contact support : Tele @Lethanhtai or facebook
    curl -X POST -H "Content-Type: text/plain" -H "Secret: 12398" --data-binary @- http://localhost:9169/webhook
    ```
 
-   **Note**: Update the `Secret` to match your website/webhook environment variable
+   **Note**: Update the `Secret` to match your website/ environment variable
 
    **Note**: It will forward the email to the webhook URL by default (http://localhost:9169/webhook). If you want to forward it to a different URL, you can change the URL in the script.
 
