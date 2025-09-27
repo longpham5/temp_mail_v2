@@ -2,7 +2,8 @@ import { MongoClient, ObjectId } from "mongodb";
 import cuid from "cuid";
 import type { DatabaseEmails, Result, SimplifiedEmail } from "@/types";
 import type { DatabaseInbox } from "@/types";
-
+import { config } from "dotenv";
+config();
 // MongoDB connection
 const client = new MongoClient(process.env.MONGO_URL || "mongodb://localhost:27017", {
   maxPoolSize: 10,
