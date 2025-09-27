@@ -1,7 +1,6 @@
 FROM node:20-alpine
 
 WORKDIR /app
-ENV SECRET="12398"
 COPY package.json package-lock.json ./
 RUN npm install --force
 
